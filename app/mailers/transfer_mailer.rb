@@ -3,7 +3,6 @@ class TransferMailer < ApplicationMailer
 
   def transfer_mail(transfer)
     @transfer = transfer
-    byebug
     mail to: @transfer.email, subject: I18n.t('views.messages.complete_registration')
   end
 end
