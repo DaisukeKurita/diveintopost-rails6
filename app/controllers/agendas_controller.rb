@@ -21,6 +21,11 @@ class AgendasController < ApplicationController
     end
   end
 
+  def destroy
+     @agenda.destroy
+     
+  end
+
   private
 
   def set_agenda
