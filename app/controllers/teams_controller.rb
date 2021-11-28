@@ -16,9 +16,7 @@ class TeamsController < ApplicationController
   end
 
   def edit
-    unless @team.owner == current_user
-      redirect_to @team, notice: I18n.t('views.messages.only_team_leaders_can_edit')
-    end
+    redirect_to @team, notice: I18n.t('views.messages.only_team_leaders_can_edit') unless @team.owner == current_user
   end
 
   def create
