@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_team, only: %i[show edit update destroy]
+  before_action :set_team, only: %i[show edit update destroy transfer]
 
   def index
     @teams = Team.all
@@ -19,7 +19,7 @@ class TeamsController < ApplicationController
 
   def create
     @team = Team.new(team_params)
-    @team.owner = current_user
+    @team.owner = current_user # ログインユーザーがチームオーナーになるコード
     if @team.save
       @team.invite_member(@team.owner)
       redirect_to @team, notice: I18n.t('views.messages.create_team')
@@ -45,6 +45,14 @@ class TeamsController < ApplicationController
 
   def dashboard
     @team = current_user.keep_team_id ? Team.find(current_user.keep_team_id) : current_user.teams.first
+  end
+
+  def transfer
+    if @team.owner == current_user
+      @team.update(owner_id: params[:owner_id])
+      TransferMailer.transfer_mail(@team.owner).deliver
+      redirect_to @team, notice: I18n.t('views.messages.update_team')
+    end
   end
 
   private
