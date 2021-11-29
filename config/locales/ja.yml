@@ -206,6 +206,7 @@ ja:
   views:
     messages:
       create_agenda: 'アジェンダ作成に成功しました！'
+      delete_agenda: 'アジェンダ削除に成功しました！'
       create_article: '記事作成に成功しました！'
       update_article: '記事更新に成功しました！'
       assigned: 'アサインしました！'
@@ -224,6 +225,7 @@ ja:
       update_profile: 'プロフィールを編集しました！'
       complete_registration: '登録完了'
       team_leader_authority_has_been_transferred_to_you: 'チームリーダーの権限があなたに移りました。'
+      removed_the_agenda: 'アジェンダを削除しました'
       edit_article: '記事を編集する'
       input_title: '記事タイトルを入力してください'
       input_content: '内容を入力してください'
